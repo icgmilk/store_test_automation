@@ -20,7 +20,7 @@ web_driver_wait = WebDriverWait(driver, 1)
 driver.get(url)
 
 locator = (By.NAME, 'cellPhone')
-def find_element(locator]):
+def find_element([locator]):
     web_driver_wait.until(method=EC.element_to_be_clickable((by, value))
 
 
