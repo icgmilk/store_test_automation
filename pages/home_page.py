@@ -16,6 +16,10 @@ class HomePage(ActionUtils):
         self.login_text_locator = (By.XPATH, '//a[text()= "會員登出"]')
 
     def input_search_text(self, text):
+        """ Input the search text
+        Args:
+            text (str): The search text
+        """
         wait = WebDriverWait(self.driver, 10)
         text_element = wait.until(EC.presence_of_element_located(self.search_text_field_locator))
         text_element.send_keys(text)
@@ -26,6 +30,7 @@ class HomePage(ActionUtils):
         button_element.click()
 
     def wait_login(self):
+        """ Wait for the login text """
         wait = WebDriverWait(self.driver, 10)
         login_element = wait.until(EC.presence_of_element_located(self.login_text_locator))
         
