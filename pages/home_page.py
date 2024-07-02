@@ -13,7 +13,6 @@ class HomePage(ActionUtils):
         super().__init__(driver)
         self.search_text_field_locator = (By.NAME, "q")
         self.search_button_locator = (By.XPATH, '//i[@class="ico ico-search"]')
-        self.login_text_locator = (By.XPATH, '//a[text()= "會員登出"]')
 
     def input_search_text(self, text):
         """ Input the search text
@@ -29,8 +28,5 @@ class HomePage(ActionUtils):
         button_element = self.find_clickable_element(self.search_button_locator)
         button_element.click()
 
-    def wait_login(self):
-        """ Wait for the login text """
-        wait = WebDriverWait(self.driver, 10)
-        login_element = wait.until(EC.presence_of_element_located(self.login_text_locator))
+
         

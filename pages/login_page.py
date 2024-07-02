@@ -14,6 +14,7 @@ class LoginPage(ActionUtils):
         self.password_locator = (By.NAME, 'password')
         self.login_register_button_locator = (By.XPATH, '//button[text()="登入/註冊"]')
         self.login_button_locator = (By.XPATH, '//button[text()="登入"]')
+        self.login_text_locator = (By.XPATH, '//a[text()= "會員登出"]')
 
 
     def input_cell_phone(self, cell_phone):
@@ -41,3 +42,8 @@ class LoginPage(ActionUtils):
         """ Click the login button """
         login_button_element = self.find_clickable_element(self.login_button_locator)
         login_button_element.click()
+
+    def wait_login(self):
+        """ Wait for the login text """
+        wait = WebDriverWait(self.driver, 10)
+        login_element = wait.until(EC.presence_of_element_located(self.login_text_locator))

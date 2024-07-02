@@ -11,33 +11,22 @@ class CartPage(ActionUtils):
         """
         super().__init__(driver)
         self.driver = driver
-        self.goods_title_locator = (By.XPATH, '//a[contains (@class, "TitleLink")]')
-        self.goods_price_locator = (By.XPATH, '(//div[contains (@class, "currency__Wrapper")])[1]')
-        self.goods_count_locator = (By.XPATH, '//input[contains (@class, "Input")]')
-
-    def get_goods_title(self):
-        """ Get the goods title
-        Returns:
-            str: The goods title
-        """
-        goods_title_element = self.find_visible_element(self.goods_title_locator)
-        return goods_title_element.text
     
-    def get_goods_price(self):
-        """ Get the goods price
+    def check_goods_title(self, goods_title):
+        """ Check the goods title
+        Args:
+            goods_title (str): The goods title
         Returns:
-            str: The goods price
+            bool: The result
         """
-        goods_price_element = self.find_visible_element(self.goods_price_locator)
-        return goods_price_element.text
+        try:
+            #檢查title是否存在購物車內
+            goods_title_element = self.find_visible_element((By.XPATH, f'''//a[text()="{goods_title}"] '''))
+            return True 
+        except:
+            return False
 
-    def get_goods_count(self):
-        """ Get the goods count
-        Returns:
-            str: The goods count
-        """
-        goods_count_element = self.find_visible_element(self.goods_count_locator)
-        return goods_count_element.get_attribute('value')
+    
         
 
     
