@@ -11,7 +11,7 @@ class HomePage(ActionUtils):
             driver (WebDriver): The instance of the WebDriver
         """
         super().__init__(driver)
-        self.search_text_field_locator = (By.NAME, "q")
+        self.search_text_field_locator = (By.ID, "ns-search-input")
         self.search_button_locator = (By.XPATH, '//i[@class="ico ico-search"]')
 
     def input_search_text(self, text):

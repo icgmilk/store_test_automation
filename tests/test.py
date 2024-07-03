@@ -3,13 +3,8 @@ import time
 import os
 from selenium import webdriver
 from selenium.webdriver.common.by import By
-from selenium.webdriver.common.keys import Keys
-from selenium.webdriver import Chrome
 from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.chrome.service import Service
-from selenium.webdriver.chrome.options import Options
-from selenium.webdriver.common.by import By
-from selenium.common.exceptions import TimeoutException
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from pages.home_page import HomePage
@@ -57,7 +52,7 @@ def test_login_then_add_product_to_cart():
     #輸入密碼
     loginpage.input_password(login_password)
     
-    #避免機器人認證
+    #避免reCAPTCHA
     time.sleep(3)
     loginpage.click_login_button()
     loginpage.wait_login()
@@ -70,9 +65,9 @@ def test_login_then_add_product_to_cart():
     search_result_page.click_first_goods()
 
     #進到商品頁面點擊加入購物車
-    good_title = first_goods_page.get_goods_title()
+    goods_title = first_goods_page.get_goods_title()
     first_goods_page.click_add_to_cart_button()
     first_goods_page.click_cart_button()
 
     #確認商品是否成功加入購物車
-    assert cart_page.check_goods_title(good_title)
+    assert cart_page.check_goods_title(goods_title)
