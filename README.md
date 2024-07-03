@@ -1,8 +1,3 @@
----
-title: store_test_automation
-
----
-
 # store_test_automation
 
 ## 實作基本購物流程的自動化測試
